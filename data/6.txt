@@ -1,0 +1,17 @@
+The Apple Watch already had a healthy ecosystem of third-party applications when the smartwatch debuted in April, with some 3,500 apps available shortly after its launch, including many of tech’s biggest names, like Facebook, Instagram, Twitter, Evernote and many others. However, one company whose apps have been notably missing from Apple’s new platform has been Google. That just changed, as the company has now released its first Apple Watch app with an update to “Google News & Weather” for iOS.
+
+While not as exciting as getting a version of Google Maps for Apple Watch, the move indicates that Google is not ignoring Apple’s new smartwatch due to its competitive nature with Google’s own Android Wear platform. That’s promising because it means Google may consider bringing other properties to Apple Watch in the future, too.
+
+The Google News & Weather app is a good first step to test the Apple Watch waters, so to speak, as it’s similar to a number of news apps that have already launched on Apple Watch, including those from major news properties like NPR, CNN, or The NYT, for instance.
+
+The News & Weather app is relatively new to iOS, as well. It was first made available to Android users before arriving on iOS last fall. It offers news summaries from 65,000 publications – like what you would find on Google News on the web – with headlines grouped into familiar categories like “Technology,” “Sports,” or “Fashion,” for example. In addition, users can customize the app with their own personalized news sections on other topics, and they can access their local news and weather.
+
+Today, the app has been updated to support Apple Watch, which makes it the first of Google’s numerous mobile properties to do so. The Watch app, like many of its competitors, offers users the ability to swipe through top headlines from the watch’s small screen.
+
+The app presents just under a dozen headlines that you can move through horizontally. Plus, you can scroll down to see an accompanying photo for each story. But the app doesn’t include the full story itself, or even a summarized version of the article, as The New York Times’ Apple Watch app does. Nor does it support Handoff to allow you to continue reading the story on your iPhone.
+
+However, the updated app does offer the ability to save the news article to Safari’s Reading List by way of Force Touch (a long press and hold gesture).
+
+Overall, the app is fairly basic – it doesn’t even offer weather alerts. The app makes more sense to use as a “Glance,” rather than something you’d hunt for and launch from the Watch’s screen showing all your installed applications. It’s hard to recommend the app as being worthy of download compared with the other news apps for Apple Watch – if anything, it feels more like an experiment at this point, rather than a solid smartwatch news-reading experience…if that’s even going to be a thing.
+
+We’ve asked Google to comment further on its Apple Watch strategy in light of this news, and will update if the company responds.

@@ -1,0 +1,15 @@
+Bootstrapping Dutch startup Zami Life is aiming to engineer posture problems out of the office worker’s life with an ergonomic stool that has a curved seat. The shape of the seat is designed to encourage the sitter’s spine to rest in what they claim is a healthier s-curve given there’s no option for slouching on this backless, convex surface.
+
+That’s the first version of Zami’s product, soft launched in the U.S. back in December. But the startup is now taking things a stage further by crowdfunding (via Indiegogo) a new version of the stool, called Zami Smart, which includes sensors that track how long you’ve been sitting. And a companion app designed to prompt you to move more.
+
+We actually saw a hack at the Disrupt NY hackathon just this weekend, called Posture.io, that offered similar posture tracking functionality but that was retro-fitted to an existing office chair. Zami’s products are a more expensive option — starting at $299 for the basic model, or $379 for the version with embedded sensors. So this is not a cost-effective option for offices or individual consumers, but perhaps more aesthetic — at least if you dig its minimalist stool design. And don’t work in an office with especially fancy chairs.
+
+Zami’s founding team is made up of orthopedic surgeon Piete Van Loon and designer Ruud-Jan Kokke.
+
+The new version of Zami stool is designed to track how you sit via pressure sensors built into the legs, and using Bluetooth Low Energy to wirelessly offload data to a companion app. The startup claims it can track posture, sitting periods and even fine-grained detail about your behavior while seated — such as whether you fidget (should you feel the need to quantify that).
+
+At this point the device is a prototype, with Zami targeting $30,000 in crowdfunding with their just launched campaign in order to get the seat to market — aiming for a December shipping schedule.
+
+“The Zami uses four active pressure sensors, one in each leg. Your legs, when placed on the ground, take some of the weight and provide two additional support points. The sensors and the algorithm in the application can detect all this,” it explains. “Combined with an initial short setup to determine a person’s weight and other vital metrics, the Zami app uses the values of the sensors to detect all kinds of information.
+
+“Among these is time spent sitting, quality of the sitting (your personal data and the weight distribution combined with original research data tells us in great detail about your posture, slouching, etc.), and behavior during sitting. (Lots of variation in the pressure sensors can indicate, for example, restless sitting or fidgeting, potential pressure point issues, etc).”

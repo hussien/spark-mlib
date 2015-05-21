@@ -1,0 +1,17 @@
+For many, Docker is the next big thing in cloud computing. But some big names—most notably Google—are now backing an alternative to this enormously influential technology.
+
+In December, one of Docker’s earliest supporters, the Silicon Valley startup CoreOS, unveiled an open source project called Rocket. CoreOS founder and CEO Alex Polvi felt that Docker had strayed from its original mission, and with Rocket, he and his colleagues hoped to bring that mission back to the fore.
+
+Five months later, Google has put its considerable weight behind this effort, officially joining the Rocket open source project and rolling the technology into one of its cloud computing tools. Polvi is set to announce Google’s involvement this morning at an event in San Francisco, and in an email to WIRED, Google has confirmed its involvement.
+
+The irony is that Docker is based on software that underpins Google’s vast online empire. Basically, Docker is a way of more efficiently building and operating services akin to Google Search, Google Maps, and Gmail—services that run across tens, hundreds, perhaps even thousands of machines. You can think of it as a shipping container for software—a tool that lets developers neatly package their code and spread it across a vast array of machines, whether those machines are running in their own data centers or atop public cloud computing services from the likes of Amazon.
+
+In the modern age, popular software applications necessarily run across a large network of machines. That’s the only way they can serve an audience that expects instant access to information. Docker can significantly streamline the creation of these applications, and that’s why it has received so much attention.
+
+Google also offers cloud computing services a la Amazon, and it was the first big-name cloud company to embrace Docker. Since then, Amazon, Microsoft, and others have followed, responding to Docker’s enormous popularity among Silicon Valley developers. But now, Google is backing Rocket as well, rolling the technology into its Kubernetes cloud computing software. Google calls this “an important milestone for the Kubernetes project.”
+
+Docker seeks to serve as a common container format that’s used across the industry. Indeed, this is where much of its strength lies. If everyone adopts the standard, it becomes far easier to run software anywhere. But for Polvi and others, Docker is no longer the simple container standard it was designed to be. It has evolved, they believe, into something more complex and unwieldy—something that tries too hard to serve the needs of its parent company, also called Docker.
+
+With Rocket, CoreOS hopes to provide a new container standard that’s outside the control of any one company. “We want a standard container that’s shared by everyone,” says Polvi. In addition to Google, Polvi says, other big names are getting behind the project, including Red Hat and VMware. And Mark Kropf, of VMware spinoff Pivotal, tells WIRED that his company is working to accommodate Rocket as well.
+
+But like Google’s Kubernetes, Pivotal’s software will continue to use Docker alongside Rocket. Docker is already so widely used, the Rocket project may have difficulty pushing a viable alternative across the industry. But at the very least, Rocket’s initial progress is another sign that the container idea will change the way the world builds software.
