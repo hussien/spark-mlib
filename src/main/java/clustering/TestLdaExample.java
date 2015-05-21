@@ -1,4 +1,4 @@
-package spark;
+package clustering;
 
 import java.util.ArrayList;
 import java.util.List;
