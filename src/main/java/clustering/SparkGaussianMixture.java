@@ -14,6 +14,8 @@ import org.apache.spark.mllib.linalg.Vectors;
 import org.apache.spark.mllib.clustering.GaussianMixtureModel;
 import org.apache.spark.mllib.clustering.GaussianMixture;
 
+import util.DataUtil;
+
 public class SparkGaussianMixture {
 
 	public static List<double[]> getCenters(JavaSparkContext sc,
@@ -42,6 +44,14 @@ public class SparkGaussianMixture {
 		for (int j = 0; j < gmm.k(); j++) {
 			System.out.println(gmm.gaussians()[j].mu());
 		}
+		
+		for (int j = 0; j < gmm.k(); j++) {
+			System.out.println(gmm.gaussians()[j].sigma());
+			
+		}
+		
+		
+	
 	}
 
 	public static void main(String[] args) {
@@ -52,17 +62,8 @@ public class SparkGaussianMixture {
 		// Load and parse data
 		String path = "data/gmm_data.txt";
 		JavaRDD<String> data = sc.textFile(path);
-		JavaRDD<Vector> parsedData = data.map(new Function<String, Vector>() {
-			public Vector call(String s) {
-				String[] sarray = s.trim().split(" ");
-				double[] values = new double[sarray.length];
-				for (int i = 0; i < sarray.length; i++)
-					values[i] = Double.parseDouble(sarray[i]);
-				return Vectors.dense(values);
-			}
-		});
+		run(sc, DataUtil.loadData(data), 2, 10);
 
-		// Cluster the data into two classes using GaussianMixture
 
 	}
 

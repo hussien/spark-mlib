@@ -93,6 +93,7 @@ class PointPanel extends JPanel {
 					// System.out.println(point[0]+" "+point[1]);
 					Ellipse2D e2 = new Ellipse2D.Double(point[0], point[1], 16,
 							16);
+				
 					ovalList.add(e2);
 				}
 				repaint();
@@ -163,6 +164,7 @@ class PointPanel extends JPanel {
 				color = Color.blue;
 			g2.setPaint(color);
 			g2.fill(e);
+			
 		}
 
 		for (int j = 0; j < ovalList.size(); j++) {
@@ -173,6 +175,7 @@ class PointPanel extends JPanel {
 				color = Color.RED;
 			g2.setPaint(color);
 			g2.drawOval((int) e.getX(), (int) e.getY(), 32, 32);
+			
 		}
 
 	}
@@ -187,7 +190,7 @@ class PointPanel extends JPanel {
 	}
 
 	public void addPoint(Point p) {
-		Ellipse2D e = new Ellipse2D.Double(p.x - 3, p.y - 3, 6, 6);
+		Ellipse2D e = new Ellipse2D.Double(p.x, p.y, 6, 6);
 		pointList.add(e);
 		selectedPoint = null;
 		repaint();

@@ -15,10 +15,11 @@ public class DataUtil {
 		JavaRDD<Vector> parsedData = data.map(
 				new Function<String, Vector>() {
 					public Vector call(String s) {
-						String[] sarray = s.split(" ");
+						String[] sarray = s.trim().split(" ");
 						double[] values = new double[sarray.length];
-						for (int i = 0; i < sarray.length; i++)
-							values[i] = Double.parseDouble(sarray[i]);
+						for (int i = 0; i < sarray.length; i++){
+							values[i] = Double.parseDouble(sarray[i].trim());
+						}
 						return Vectors.dense(values);
 					}
 				}
