@@ -14,7 +14,7 @@ import org.apache.spark.mllib.linalg.Vectors;
 
 
 
-public class Kmeans {
+public class SparkKMeans {
 
 
 	public static JavaRDD<Vector> loadData(JavaRDD<String> data){

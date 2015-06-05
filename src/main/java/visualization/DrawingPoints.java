@@ -22,7 +22,7 @@ import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.mllib.linalg.Vector;
 
-import clustering.Kmeans;
+import clustering.SparkKMeans;
 
 
 public class DrawingPoints
@@ -78,9 +78,9 @@ class PointPanel extends JPanel
 					points.add(a);
 				}
 
-				JavaRDD<Vector> pointData = Kmeans.loadPoint(sc, points);
+				JavaRDD<Vector> pointData = SparkKMeans.loadPoint(sc, points);
 
-				List<double[]> rs = Kmeans.getCenters(sc, pointData, 2, 10);
+				List<double[]> rs = SparkKMeans.getCenters(sc, pointData, 2, 10);
 
 				for(double[]point:rs){
 					//System.out.println(point[0]+" "+point[1]);
