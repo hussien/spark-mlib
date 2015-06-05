@@ -15,7 +15,7 @@ import org.apache.spark.api.java.function.PairFunction;
 import scala.Tuple2;
 import java.util.regex.Pattern;
 
-public class TestWordCount {
+public class WordCount {
 
 	private static final Pattern SPACE = Pattern.compile("\\W");
 

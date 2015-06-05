@@ -14,7 +14,7 @@ import org.apache.spark.mllib.linalg.Vector;
 import org.apache.spark.mllib.linalg.Vectors;
 import org.apache.spark.SparkConf;
 
-public class TestLdaExample {
+public class LDAExample {
 	 public static void main(String[] args) {
 		 SparkConf conf = new SparkConf().setAppName("LDA Example").setMaster("local");
 		    JavaSparkContext sc = new JavaSparkContext(conf);

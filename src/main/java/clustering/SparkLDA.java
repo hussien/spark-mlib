@@ -26,7 +26,7 @@ import scala.collection.Seq;
 import scala.collection.mutable.HashMap;
 
 
-public class TestLda {
+public class SparkLDA {
 
 	private static final Pattern SPACE = Pattern.compile("\\W");
 
