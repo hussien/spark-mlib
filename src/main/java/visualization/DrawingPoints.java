@@ -24,82 +24,112 @@ import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.mllib.linalg.Vector;
 
+import util.DataUtil;
+import clustering.SparkGaussianMixture;
 import clustering.SparkKMeans;
 
-
-public class DrawingPoints
-{
-	public static void main(String[] args)
-	{
-
+public class DrawingPoints {
+	public static void main(String[] args) {
 
 		JFrame f = new JFrame();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		PointPanel myPanel =new PointPanel();
+		PointPanel myPanel = new PointPanel();
 
 		f.getContentPane().add(myPanel);
-		f.setSize(400,400);
+		f.setSize(400, 400);
 
-		f.setLocation(200,200);
+		f.setLocation(200, 200);
 		f.setVisible(true);
 	}
 }
 
-class PointPanel extends JPanel
-{
+class PointPanel extends JPanel {
 	List<Ellipse2D> pointList;
 	List<Ellipse2D> ovalList;
 	Color selectedColor;
 	Ellipse2D selectedPoint;
 
+	public PointPanel() {
 
-
-	public PointPanel()
-	{
-
-		final SparkConf conf = new SparkConf().setAppName("K-means Example").setMaster("local");
-		final JavaSparkContext  sc = new JavaSparkContext(conf);
-
+		final SparkConf conf = new SparkConf().setAppName("K-means Example")
+				.setMaster("local");
+		final JavaSparkContext sc = new JavaSparkContext(conf);
 
 		pointList = new ArrayList<Ellipse2D>();
-		ovalList = new ArrayList<Ellipse2D>(); 
+		ovalList = new ArrayList<Ellipse2D>();
 		selectedColor = Color.red;
 		addMouseListener(new PointLocater(this));
 		setBackground(Color.white);
 
 		JButton runKmeansButton = new JButton("KMeans");
+		JButton runGMMButton = new JButton("GMM");
 		JButton cleanButton = new JButton("CLEAN");
 		final JTextField inputText = new JTextField("1");
 
 		runKmeansButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int clusterNumber=1;
-				try{
+				int clusterNumber = 1;
+				try {
 					clusterNumber = Integer.parseInt(inputText.getText());
-				}catch (Exception exce) {
+				} catch (Exception exce) {
 					exce.printStackTrace();
 				}
 
 				ovalList.clear();
-				List<Double[]>points =new ArrayList<Double[]>();
-				for(Ellipse2D p:pointList ){
-					Double [] a=new Double[2];
+				List<Double[]> points = new ArrayList<Double[]>();
+				for (Ellipse2D p : pointList) {
+					Double[] a = new Double[2];
 					a[0] = p.getX();
 					a[1] = p.getY();
 					points.add(a);
 				}
 
-				JavaRDD<Vector> pointData = SparkKMeans.loadPoint(sc, points);
+				JavaRDD<Vector> pointData = DataUtil.loadPoint(sc, points);
 
-				List<double[]> rs = SparkKMeans.getCenters(sc, pointData, clusterNumber, 10);
+				List<double[]> rs = SparkKMeans.getCenters(sc, pointData,
+						clusterNumber, 10);
 
-				for(double[]point:rs){
-					//System.out.println(point[0]+" "+point[1]);
-					Ellipse2D e2 = new Ellipse2D.Double(point[0],point[1], 14, 14);
+				for (double[] point : rs) {
+					// System.out.println(point[0]+" "+point[1]);
+					Ellipse2D e2 = new Ellipse2D.Double(point[0], point[1], 16,
+							16);
 					ovalList.add(e2);
 				}
 				repaint();
-			}          
+			}
+		});
+
+		runGMMButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int clusterNumber = 1;
+				try {
+					clusterNumber = Integer.parseInt(inputText.getText());
+				} catch (Exception exce) {
+					exce.printStackTrace();
+				}
+
+				ovalList.clear();
+				List<Double[]> points = new ArrayList<Double[]>();
+				for (Ellipse2D p : pointList) {
+					Double[] a = new Double[2];
+					a[0] = p.getX();
+					a[1] = p.getY();
+					points.add(a);
+				}
+
+				JavaRDD<Vector> pointData = DataUtil.loadPoint(sc, points);
+
+				List<double[]> rs = SparkGaussianMixture.getCenters(sc,
+						pointData, clusterNumber, 10);
+
+				for (double[] point : rs) {
+					// System.out.println(point[0]+" "+point[1]);
+					Ellipse2D e2 = new Ellipse2D.Double(point[0], point[1], 16,
+							16);
+					ovalList.add(e2);
+				}
+				repaint();
+			}
 		});
 
 		cleanButton.addActionListener(new ActionListener() {
@@ -109,26 +139,25 @@ class PointPanel extends JPanel
 				ovalList.clear();
 
 				repaint();
-			}          
+			}
 		});
 
 		this.add(runKmeansButton);
+		this.add(runGMMButton);
 		this.add(cleanButton);
 		this.add(inputText);
 	}
 
-	protected void paintComponent(Graphics g)
-	{
+	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		Graphics2D g2 = (Graphics2D)g;
+		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 		Ellipse2D e;
 		Color color;
-		for(int j = 0; j < pointList.size(); j++)
-		{
-			e = (Ellipse2D)pointList.get(j);
-			if(e == selectedPoint)
+		for (int j = 0; j < pointList.size(); j++) {
+			e = (Ellipse2D) pointList.get(j);
+			if (e == selectedPoint)
 				color = selectedColor;
 			else
 				color = Color.blue;
@@ -136,33 +165,28 @@ class PointPanel extends JPanel
 			g2.fill(e);
 		}
 
-		for(int j = 0; j < ovalList.size(); j++)
-		{
-			e = (Ellipse2D)ovalList.get(j);
-			if(e == selectedPoint)
+		for (int j = 0; j < ovalList.size(); j++) {
+			e = (Ellipse2D) ovalList.get(j);
+			if (e == selectedPoint)
 				color = selectedColor;
 			else
 				color = Color.RED;
 			g2.setPaint(color);
-			g2.drawOval((int)e.getX(), (int)e.getY(), 32, 32);
+			g2.drawOval((int) e.getX(), (int) e.getY(), 32, 32);
 		}
-
 
 	}
 
-	public List getPointList()
-	{
+	public List getPointList() {
 		return pointList;
 	}
 
-	public void setSelectedPoint(Ellipse2D e)
-	{
+	public void setSelectedPoint(Ellipse2D e) {
 		selectedPoint = e;
 		repaint();
 	}
 
-	public void addPoint(Point p)
-	{
+	public void addPoint(Point p) {
 		Ellipse2D e = new Ellipse2D.Double(p.x - 3, p.y - 3, 6, 6);
 		pointList.add(e);
 		selectedPoint = null;
@@ -170,32 +194,27 @@ class PointPanel extends JPanel
 	}
 }
 
-class PointLocater extends MouseAdapter
-{
+class PointLocater extends MouseAdapter {
 	PointPanel pointPanel;
 
-	public PointLocater(PointPanel pp)
-	{
+	public PointLocater(PointPanel pp) {
 		pointPanel = pp;
 	}
 
-	public void mousePressed(MouseEvent e)
-	{
+	public void mousePressed(MouseEvent e) {
 		Point p = e.getPoint();
 		boolean haveSelection = false;
 		List list = pointPanel.getPointList();
 		Ellipse2D ellipse;
-		for(int j = 0; j < list.size(); j++)
-		{
-			ellipse = (Ellipse2D)list.get(j);
-			if(ellipse.contains(p))
-			{
+		for (int j = 0; j < list.size(); j++) {
+			ellipse = (Ellipse2D) list.get(j);
+			if (ellipse.contains(p)) {
 				pointPanel.setSelectedPoint(ellipse);
 				haveSelection = true;
 				break;
 			}
 		}
-		if(!haveSelection)
+		if (!haveSelection)
 			pointPanel.addPoint(p);
 	}
 }
