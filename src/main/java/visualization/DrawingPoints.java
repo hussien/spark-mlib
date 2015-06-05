@@ -16,6 +16,8 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
@@ -65,10 +67,19 @@ class PointPanel extends JPanel
 		addMouseListener(new PointLocater(this));
 		setBackground(Color.white);
 
-		JButton mybutton = new JButton("TEST");
-		JButton mybutton2 = new JButton("CLEAN");
-		mybutton.addActionListener(new ActionListener() {
+		JButton runKmeansButton = new JButton("KMeans");
+		JButton cleanButton = new JButton("CLEAN");
+		final JTextField inputText = new JTextField("1");
+
+		runKmeansButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int clusterNumber=1;
+				try{
+					clusterNumber = Integer.parseInt(inputText.getText());
+				}catch (Exception exce) {
+					exce.printStackTrace();
+				}
+
 				ovalList.clear();
 				List<Double[]>points =new ArrayList<Double[]>();
 				for(Ellipse2D p:pointList ){
@@ -80,7 +91,7 @@ class PointPanel extends JPanel
 
 				JavaRDD<Vector> pointData = SparkKMeans.loadPoint(sc, points);
 
-				List<double[]> rs = SparkKMeans.getCenters(sc, pointData, 2, 10);
+				List<double[]> rs = SparkKMeans.getCenters(sc, pointData, clusterNumber, 10);
 
 				for(double[]point:rs){
 					//System.out.println(point[0]+" "+point[1]);
@@ -91,7 +102,7 @@ class PointPanel extends JPanel
 			}          
 		});
 
-		mybutton2.addActionListener(new ActionListener() {
+		cleanButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				pointList.clear();
@@ -101,8 +112,9 @@ class PointPanel extends JPanel
 			}          
 		});
 
-		this.add(mybutton);
-		this.add(mybutton2);
+		this.add(runKmeansButton);
+		this.add(cleanButton);
+		this.add(inputText);
 	}
 
 	protected void paintComponent(Graphics g)
